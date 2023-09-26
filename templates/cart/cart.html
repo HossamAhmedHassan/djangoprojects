@@ -1,0 +1,38 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+{% include 'parts/header.html' %}
+<hr width="100%" color="grey">
+<p style="margin-left: 10%; font-family: system-ui;font-weight: 600;font-size: 17px;">My cart</p>
+<div class="wholecart">
+
+    <div class="ordered">
+        <h2 class="menu">Menu</h2>
+        <p class="meals">Meals</p>
+        <div style="margin-bottom: 10px;">
+            <hr style="color: rgb(191, 191, 191);">
+            <div class="meal">
+                <img src="{% static 'images/hugecupcake.png' %}" alt="" class="mealimg">
+                <div style="margin-top: -10px;margin-left: 10px;">
+                    <p style="font-size: 15px;">Chiken & Ribs Combo</p>
+                    <p style="font-size: 14px;color: rgb(151, 151, 151);">Its my bes mac food hah sdasd sdsdsdasd<br>
+                        sorry new abc is harddsadsadasd asdasd </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="payment">
+        <h2>Payment summary</h2>
+        <p style="display: inline-block;">Subtotal</p>
+        <p style="display: inline-block;margin-left: 60%;">$</p><br>
+        <p style="display: inline-block;">Shipping</p>
+        <p style="display: inline-block;margin-left: 58.7%;">$</p><br>
+        <p style="display: inline-block;">Total(tax incl.)</p>
+        <p style="display: inline-block;margin-left: 49%;color: blue;">$</p>
+        <div class="proceed">
+            <p style="color: white;padding-top: 14px;">Proceed to checkout</p>
+        </div>
+    </div>
+
+
+</div>
