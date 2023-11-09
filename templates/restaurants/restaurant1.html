@@ -1,2 +1,24 @@
 {% load static %}
 {% include 'parts/header.html' %}
+<link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+
+
+<div class="ordered">
+    <h2 class="menu">Menu</h2>
+    <p class="meals">Meals</p>
+    {% for res in pro %}
+        {% if res.restaurant == 'restaurant1' %}
+            <div style="margin-bottom: 10px;">
+                <hr style="color: rgb(191, 191, 191);">
+                <div class="meal">
+                    <img src="../..{{ res.image.url }}" alt="" class="mealimg" style="height: 100px;width: 100px;">
+                    <div style="margin-top: -10px;margin-left: 10px;">
+                        <p style="font-size: 17px;margin: 10px 0 5px 0;">{{res.title}}</p>
+                        <p style="margin:0px ;color:rgb(151, 151, 151);">{{res.description}}</p>
+                        <p style="margin:10px;margin-left:1%;color: blue;">{{res.price}}</p>
+                    </div>              
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
