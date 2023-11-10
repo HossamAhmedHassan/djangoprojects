@@ -1,38 +1,65 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+
+<style>
+     input {
+        width: 60px;
+        height: 35px;
+        border-radius: 30px;
+        padding: 10px;
+        margin-left: 400px;
+        margin-top: 30px;
+    }
+</style>
+
+
 {% include 'parts/header.html' %}
 <hr width="100%" color="grey">
 <p style="margin-left: 10%; font-family: system-ui;font-weight: 600;font-size: 17px;">My cart</p>
 <div class="wholecart">
-
     <div class="ordered">
         <h2 class="menu">Menu</h2>
         <p class="meals">Meals</p>
-        <div style="margin-bottom: 10px;">
-            <hr style="color: rgb(191, 191, 191);">
-            <div class="meal">
-                <img src="{% static 'images/hugecupcake.png' %}" alt="" class="mealimg">
-                <div style="margin-top: -10px;margin-left: 10px;">
-                    <p style="font-size: 15px;">Chiken & Ribs Combo</p>
-                    <p style="font-size: 14px;color: rgb(151, 151, 151);">Its my bes mac food hah sdasd sdsdsdasd<br>
-                        sorry new abc is harddsadsadasd asdasd </p>
+        {% for x in move %}
+        {% for res in pro %}
+        {% if res.id == x.id %}
+            <div style="margin-bottom: 10px;">
+                <hr style="color: rgb(191, 191, 191);">
+                <div class="meal" style="position: relative;">
+                    <img src="{{ res.image.url }}" alt="" class="mealimg" style="height: 100px;width: 100px;">
+                    <div style="margin-top: -10px;margin-left: 10px;">
+                        <p style="font-size: 17px;margin: 24px 0 5px 0;">{{res.title}}</p>
+                        <p style="margin:0px ;color:rgb(151, 151, 151);">{{res.description}}</p>
+                        <p style="margin:10px;margin-left:1%;color: blue; font-size: 17px;">{{res.price}}$</p>
+                    </div>
+                    <input type="number" name="id{{res.id}}" id="input" value={{x.count}} min=0 max=9 
+                    style="position: absolute;top: 0px;right: 70px;">
                 </div>
             </div>
-        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
     </div>
 
     <div class="payment">
         <h2>Payment summary</h2>
         <p style="display: inline-block;">Subtotal</p>
-        <p style="display: inline-block;margin-left: 60%;">$</p><br>
+        <p style="display: inline-block;margin-left: 60%;">${{price}}</p><br>
         <p style="display: inline-block;">Shipping</p>
-        <p style="display: inline-block;margin-left: 58.7%;">$</p><br>
+        {% if price == 0 %}
+        <p style="display: inline-block;margin-left: 58.7%;">$0</p><br>
         <p style="display: inline-block;">Total(tax incl.)</p>
-        <p style="display: inline-block;margin-left: 49%;color: blue;">$</p>
+        <p style="display: inline-block;margin-left: 49%;color: blue;">$0</p>
+        {% else %}
+        <p style="display: inline-block;margin-left: 58.7%;">$20</p><br>
+        <p style="display: inline-block;">Total(tax incl.)</p>
+        <p style="display: inline-block;margin-left: 49%;color: blue;">${{price|add:20}}</p>
+        {% endif %}
+        
+        
         <div class="proceed">
             <p style="color: white;padding-top: 14px;">Proceed to checkout</p>
         </div>
     </div>
-
-
+    
 </div>

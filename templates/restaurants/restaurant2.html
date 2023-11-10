@@ -1,5 +1,43 @@
 {% load static %}
 {% include 'parts/header.html' %}
+<link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+<style>
+    form div div div input {
+        width: 60px;
+        height: 35px;
+        border-radius: 30px;
+        padding: 10px;
+        margin-left: 400px;
+        margin-top: 30px;
+    }
+</style>
+
+<form method="POST">{% csrf_token %}
+    <div class="ordered" style="display: inline-block;">
+        <h2 class="menu">Menu</h2>
+        <p class="meals">Meals</p>
+        {% for res in pro %}
+        {% if res.restaurant == 'restaurant2' %}
+        <div style="margin-bottom: 10px;">
+            <hr style="color: rgb(191, 191, 191);">
+            <div class="meal" style="position: relative;">
+                <img src="{{ res.image.url }}" alt="" class="mealimg" style="height: 100px;width: 100px;">
+                <div style="margin-top: -10px;margin-left: 10px;">
+                    <p style="font-size: 17px;margin: 24px 0 5px 0;">{{res.title}}</p>
+                    <p style="margin:0px ;color:rgb(151, 151, 151);">{{res.description}}</p>
+                    <p style="margin:10px;margin-left:1%;color: blue; font-size: 17px;">{{res.price}}$</p>
+                </div>
+                <input type="number" name="id{{res.id}}" id="input" value=0 min=0 max=9 
+                style="position: absolute;top: 0px;right: 70px;">
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <input type="submit" value="To Cart" style="position: fixed; top: 300px;right: 250px;width: 120px;
+    height: 60px;border-width: 5px;cursor: pointer;font-size: 25px; background-color: rgb(229, 229, 229);
+    color: rgb(99, 99, 202);border-color: rgb(99, 99, 202) ;">
+</form>
 
 
-<p>res2</p>
+<script src="{% static 'js/restaurants.js' %}"></script>
