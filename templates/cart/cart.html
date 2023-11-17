@@ -32,7 +32,7 @@
                         <p style="margin:0px ;color:rgb(151, 151, 151);">{{res.description}}</p>
                         <p style="margin:10px;margin-left:1%;color: blue; font-size: 17px;">{{res.price}}$</p>
                     </div>
-                    <input type="number" name="id{{res.id}}" id="input" value={{x.count}} min=0 max=9 
+                    <input type="number" name="id{{res.id}}" id="input" value={{x.count}} min=0 max=9 disabled
                     style="position: absolute;top: 0px;right: 70px;">
                 </div>
             </div>
@@ -40,7 +40,7 @@
         {% endfor %}
         {% endfor %}
     </div>
-
+<form method="post" action="/orders"> {% csrf_token %}
     <div class="payment">
         <h2>Payment summary</h2>
         <p style="display: inline-block;">Subtotal</p>
@@ -53,13 +53,13 @@
         {% else %}
         <p style="display: inline-block;margin-left: 58.7%;">$20</p><br>
         <p style="display: inline-block;">Total(tax incl.)</p>
-        <p style="display: inline-block;margin-left: 49%;color: blue;">${{price|add:20}}</p>
+        <input type="text" name="to" value="${{price|add:20}}" class="totalamount" >
         {% endif %}
         
         
-        <div class="proceed">
-            <p style="color: white;padding-top: 14px;">Proceed to checkout</p>
+        <div class="proceed" >
+            <input type="submit" value="Proceed to checkout" class="submitamount">
         </div>
     </div>
-    
+</form>    
 </div>

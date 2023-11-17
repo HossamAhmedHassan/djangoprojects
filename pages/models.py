@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 
@@ -19,6 +20,22 @@ class Product(models.Model):
     active      = models.BooleanField()
 
 
-class MovingData(models.Model):
-    id = models.IntegerField(primary_key=True)
+class Movingdata(models.Model):
+    id = models.IntegerField(primary_key=True, serialize=False,default=0)
     count = models.IntegerField()
+    restaurant = models.CharField(max_length=50,editable=False,null=True)
+
+
+class Movingtoorders(models.Model):
+    restaurant = models.CharField(max_length=50)
+    totalamount = models.IntegerField()
+    time = models.TimeField(default=datetime.now,editable=False)
+    date = models.DateField(default=datetime.now,editable=False)
+
+class MovedData(models.Model):
+    restaurant = models.CharField(max_length=50)
+    totalamount = models.IntegerField()
+    time = models.TimeField()
+    date = models.DateField()
+    class Meta:
+        ordering=['-id']
