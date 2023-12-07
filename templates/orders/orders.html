@@ -2,11 +2,14 @@
 <link rel="stylesheet" href="{% static 'css/orders/orders.css' %}">
 {% include 'parts/header.html' %}
 <hr width="100%" color="grey"> <br><br>
-
+<form method="post">{% csrf_token %}
+    <input type="hidden" name="form_submission" value="true">
+    <button id="clearButton" class="clear">Clear All Data</button>
+</form>
 <h2 style="margin-left: 10%;">My orders</h2>
 
 
-    <table class="table" style="background-color: rgb(134, 134, 134);">
+    <table class="table">
         <tr>
             <th>Order Id</th>
             <th>restaurant</th>

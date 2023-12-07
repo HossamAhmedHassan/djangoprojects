@@ -1,6 +1,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
      input {
         width: 60px;
@@ -34,6 +34,13 @@
                     </div>
                     <input type="number" name="id{{res.id}}" id="input" value={{x.count}} min=0 max=9 disabled
                     style="position: absolute;top: 0px;right: 70px;">
+                    <form method="post">{% csrf_token %}
+                        <input type="hidden" name="trash{{res.id}}">
+                        <button style="font-size:24px;position: absolute;top: 33px;right: 20px;
+                        background-color: inherit;border: none;outline: none;cursor: pointer;">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         {% endif %}
@@ -61,5 +68,15 @@
             <input type="submit" value="Proceed to checkout" class="submitamount">
         </div>
     </div>
-</form>    
+    <div style="display: inline-block;">
+    </div>
+</form>
+{% if move_count != 0 %}
+    <form method="post">{% csrf_token %}
+        <button name="clearProducts" style="font-size: 30px;position: absolute;right: 220px;top: 470px;padding: 20px;
+        background-color: inherit;border: 3px solid rgb(93, 86, 86);outline: none;border-radius: 30px;cursor: pointer;">
+            Clear Cart <i class="fa-trash-o fa"></i>
+        </button> 
+    </form>
+{% endif %}
 </div>
