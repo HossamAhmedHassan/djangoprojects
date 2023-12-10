@@ -1,0 +1,61 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Django Server",
+            "type": "shell",
+            "command": "./myvenv/bin/activate && python manage.py runserver",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Make Migrations",
+            "type": "shell",
+            "command": "./myvenv/bin/activate && python manage.py makemigrations",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Migrate",
+            "type": "shell",
+            "command": "./myvenv/bin/activate && python manage.py migrate",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Install Requirements",
+            "type": "shell",
+            "command": "./myvenv/bin/activate && pip install -r requirements.txt",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Creating Environments",
+            "type": "shell",
+            "command": "python -m ./myvenv ./myvenv",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Creating Super User",
+            "type": "shell",
+            "command": "python manage.py createsuperuser",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Export Data",
+            "type": "shell",
+            "command": "./myvenv/bin/activate && python manage.py dumpdata --output=fixtures/data.json",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Import Data",
+            "type": "shell",
+            "command": "./myvenv/bin/activate && python manage.py loaddata fixtures/* --format=json",
+            "problemMatcher": [],
+            "group": "build"
+        },
+    ]
+}
