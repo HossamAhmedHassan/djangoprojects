@@ -3,19 +3,19 @@
 <link rel="stylesheet" href="{% static 'css/respage/respage.css' %}">
 <hr color="grey"><br>
 <div class="offers">
-    <div class="deserts">
+    <div class="deserts" style="background-color:#f3f4ff;">
         <img src="{% static 'images/hugecupcake.png' %}" alt="" class="desertsimg inlineblock">
         <div class="inlineblock desertsdiv">
             <p class="desertsp inlineblock">All deserts</p><br>
             <p class="desertsp1 inlineblock" style="color: rgb(78, 96, 255);">20% OFF</p>
         </div>
     </div>
-    <div class="deserts" style="background-color: #fef2ec;">
+    <div class="deserts">
         <img src="{% static 'images/burger.png' %}" alt="" class="desertsimg inlineblock">
         <img src="{% static 'images/burger1.png' %}" alt="" >
         <div class="inlineblock desertsdiv">
             <p class="desertsp inlineblock">Burgers</p><br>
-            <p class="desertsp1 inlineblock" style="color: rgb(253, 109, 34);">40% OFF</p>
+            <p class="desertsp1 inlineblock" >40% OFF</p>
         </div>
     </div>
 </div>
@@ -40,11 +40,10 @@
         <p>Deserts</p>
     </div>
 </div>
-<p style="margin-left: 5%;font-weight: 700;font-family: system-ui">Nearby resturants</p>
+<p class="restaurant">Nearby resturants</p>
 <div class="resturants">
     <div onclick="location.pathname = '/restaurant1'" style="background-image: url('../../static/images/0.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs"
-            style="visibility: hidden;height: 160px;" onclick="">
+        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
         <p class="resturantsp">Burger King</p>
         <p class="resturantsp1">20-30min</p>
         <span><img src="{% static 'images/burger.svg' %}" alt="">
@@ -56,8 +55,7 @@
         </span>
     </div>
     <div onclick="location.pathname = '/restaurant2'" style="background-image: url('../../static/images/1.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs"
-            style="visibility: hidden;height: 160px;">
+        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
         <p class="resturantsp">Burger King</p>
         <p class="resturantsp1">20-30min</p>
         <span><img src="{% static 'images/burger.svg' %}" alt="">
@@ -65,8 +63,7 @@
         </span>
     </div>
     <div onclick="location.pathname = '/restaurant3'" style="background-image: url('../../static/images/2.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs"
-            style="visibility: hidden;height: 160px;">
+        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
         <p class="resturantsp">Burger King</p>
         <p class="resturantsp1">20-30min</p>
         <span><img src="{% static 'images/salmon-sushi.svg' %}" alt="">
@@ -74,8 +71,7 @@
         </span>
     </div>
     <div onclick="location.pathname = '/restaurant4'" style="background-image: url('../../static/images/3.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs"
-            style="visibility: hidden;height: 160px;">
+        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
         <p class="resturantsp">Burger King</p>
         <p class="resturantsp1">20-30min</p>
         <span><img src="{% static 'images/salmon-sushi.svg' %}" alt="">
@@ -83,8 +79,7 @@
         </span>
     </div>
     <div onclick="location.pathname = '/restaurant5'" style="background-image: url('../../static/images/4.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs"
-            style="visibility: hidden;height: 160px;">
+        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
         <p class="resturantsp">Burger King</p>
         <p class="resturantsp1">20-30min</p>
         <span><img src="{% static 'images/salmon-sushi.svg' %}" alt="">
@@ -92,8 +87,7 @@
         </span>
     </div>
     <div onclick="location.pathname = '/restaurant6'" style="background-image: url('../../static/images/5.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs"
-            style="visibility: hidden;height: 160px;">
+        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
         <p class="resturantsp">Burger King</p>
         <p class="resturantsp1">20-30min</p>
         <span><img src="{% static 'images/pizza.svg' %}" alt="">

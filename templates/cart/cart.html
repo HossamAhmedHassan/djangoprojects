@@ -1,80 +1,70 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-     input {
-        width: 60px;
-        height: 35px;
-        border-radius: 30px;
-        padding: 10px;
-        margin-left: 400px;
-        margin-top: 30px;
-    }
-</style>
-
 
 {% include 'parts/header.html' %}
 <hr width="100%" color="grey">
-<p style="margin-left: 10%; font-family: system-ui;font-weight: 600;font-size: 17px;">My cart</p>
+<p class="heading">My cart</p>
 <div class="wholecart">
     <div class="ordered">
         <h2 class="menu">Menu</h2>
         <p class="meals">Meals</p>
         {% for x in move %}
-        {% for res in pro %}
-        {% if res.id == x.id %}
-            <div style="margin-bottom: 10px;">
-                <hr style="color: rgb(191, 191, 191);">
-                <div class="meal" style="position: relative;">
-                    <img src="{{ res.image.url }}" alt="" class="mealimg" style="height: 100px;width: 100px;">
-                    <div style="margin-top: -10px;margin-left: 10px;">
-                        <p style="font-size: 17px;margin: 24px 0 5px 0;">{{res.title}}</p>
-                        <p style="margin:0px ;color:rgb(151, 151, 151);">{{res.description}}</p>
-                        <p style="margin:10px;margin-left:1%;color: blue; font-size: 17px;">{{res.price}}$</p>
+            {% for res in pro %}
+                {% if res.id == x.id %}
+                    <div style="margin-bottom: 10px;">
+                        <hr style="color: rgb(191, 191, 191);">
+                        <div class="meal">
+                            <img src="{{ res.image.url }}" class="mealimg">
+                            <div style="margin-top: -10px;margin-left: 10px;">
+                                <p style="font-size: 17px;margin: 24px 0 5px 0;">{{res.title}}</p>
+                                <p style="margin:0px ;color:rgb(151, 151, 151);">{{res.description}}</p>
+                                <p class="itemPrice">{{res.price}}$</p>
+                            </div>
+                            <input type="number" name="id{{res.id}}" id="input" value={{x.count}} min=0 max=9 disabled>
+                            <form method="post">{% csrf_token %}
+                                <input type="hidden" name="trash{{res.id}}">
+                                <button class="trashBtn">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                    <input type="number" name="id{{res.id}}" id="input" value={{x.count}} min=0 max=9 disabled
-                    style="position: absolute;top: 0px;right: 70px;">
-                    <form method="post">{% csrf_token %}
-                        <input type="hidden" name="trash{{res.id}}">
-                        <button style="font-size:24px;position: absolute;top: 33px;right: 20px;
-                        background-color: inherit;border: none;outline: none;cursor: pointer;">
-                            <i class="fa fa-trash-o"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        {% endif %}
-        {% endfor %}
+                {% endif %}
+            {% endfor %}
         {% endfor %}
     </div>
-<form method="post" action="/orders"> {% csrf_token %}
+<form method="post"> {% csrf_token %}
     <div class="payment">
+
         <h2>Payment summary</h2>
-        <p style="display: inline-block;">Subtotal</p>
-        <p style="display: inline-block;margin-left: 60%;">${{price}}</p><br>
-        <p style="display: inline-block;">Shipping</p>
+
+        <p>Subtotal</p>
+        <p style="margin-left: 60%;">${{price}}</p><br>
+        <p>Shipping</p>
+
         {% if price == 0 %}
-        <p style="display: inline-block;margin-left: 58.7%;">$0</p><br>
-        <p style="display: inline-block;">Total(tax incl.)</p>
-        <p style="display: inline-block;margin-left: 49%;color: blue;">$0</p>
+        <p style="margin-left: 58.7%;">$0</p><br>
+        <p>Total(tax incl.)</p>
+        <p style="margin-left: 49%;color: blue;">$0</p>
         {% else %}
-        <p style="display: inline-block;margin-left: 58.7%;">$20</p><br>
-        <p style="display: inline-block;">Total(tax incl.)</p>
+
+        <p style="margin-left: 58.7%;">$20</p><br>
+        <p>Total(tax incl.)</p>
         <input type="text" name="to" value="${{price|add:20}}" class="totalamount" >
+
         {% endif %}
         
         
         <div class="proceed" >
-            <input type="submit" value="Proceed to checkout" class="submitamount">
+            <input type="submit" value="Proceed to checkout" class="submitamount" name="Proceed">
         </div>
     </div>
-    <div style="display: inline-block;">
-    </div>
+ 
 </form>
 {% if move_count != 0 %}
     <form method="post">{% csrf_token %}
-        <button name="clearProducts" style="font-size: 30px;position: absolute;right: 220px;top: 470px;padding: 20px;
-        background-color: inherit;border: 3px solid rgb(93, 86, 86);outline: none;border-radius: 30px;cursor: pointer;">
+        <button name="clearProducts" class="clearProducts">
             Clear Cart <i class="fa-trash-o fa"></i>
         </button> 
     </form>

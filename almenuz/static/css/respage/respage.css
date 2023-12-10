@@ -12,10 +12,10 @@
 .deserts {
     width: 47%;
     display: inline-flex;
-    background-color: #f3f4ff;
     border-radius: 10px;
     padding: 5px 5px 0 5px;
     height: 235px;
+    background-color: #fef2ec;
 }
 
 .desertsimg {
@@ -37,6 +37,7 @@
     font-size: 34px;
     margin-top: 10px;
     font-family: Geneva, Tahoma, sans-serif;
+    color: rgb(253, 109, 34);
 }
 
 .catogeries {
@@ -151,4 +152,15 @@ button:hover {
 
 .wholefooter{
 overflow-y: hidden;
+}
+
+.restaurant{
+    margin-left: 5%;
+    font-weight: 700;
+    font-family: system-ui;
+}
+
+.resturantsimgs{
+    visibility: hidden;
+    height: 160px;
 }
