@@ -24,13 +24,10 @@
         {% endif %}
         {% endfor %}
     </div>
-    <input type="submit" value="To Cart" class="submit">
+    <input type="submit" value="To Cart" class="submit" >
     
 </form>
-{% if moveCount != 0 %}
-    <form action="{% url 'cart' %}">
-        <input type="submit" value="Go Cart" class="submit" style="top: 340px;">
-    </form>
-{% endif %}
 
-<script src="{% static 'js/restaurants.js' %}"></script>
+<form action="{% url 'cart' %}">
+        <input type="submit" value="Go Cart" class="submit" style="top: 340px;">
+</form>
