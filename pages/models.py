@@ -3,6 +3,16 @@ from datetime import datetime
 
 # Create your models here.
 
+class Restaurant(models.Model):
+    pass
+    # name
+    # rate
+    # average_order_time
+    # average_price
+    # image
+    # category
+
+
 class Product(models.Model):
     res_choices = [
         ('restaurant1','restaurant1'),
@@ -20,22 +30,26 @@ class Product(models.Model):
     active      = models.BooleanField()
 
 
-class Movingdata(models.Model):
-    id = models.IntegerField(primary_key=True, serialize=False,default=0)
-    count = models.IntegerField()
-    restaurant = models.CharField(max_length=50,editable=False,null=True)
+class CartProduct(models.Model):
+    pass
+    # product
+    # count
+    # order
+    # in_order
 
 
-class Movingtoorders(models.Model):
-    restaurant = models.CharField(max_length=50)
-    totalamount = models.IntegerField()
-    time = models.TimeField(default=datetime.now,editable=False)
-    date = models.DateField(default=datetime.now,editable=False)
+class Order(models.Model):
+    pass
+    # date
+    # time
+    # status
+    # delivery_time
+
 
 class MovedData(models.Model):
     restaurant = models.CharField(max_length=50)
     totalamount = models.IntegerField()
     time = models.TimeField()
-    date = models.DateField()
+    date = models.DateTimeField()
     class Meta:
         ordering=['-id']
