@@ -73,11 +73,13 @@
     margin-top: 10px;
 }
 
+
+
 .resturants {
     display: flex;
     width: 90%;
     margin-left: 5%;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -88,10 +90,6 @@
     border-radius: 10px;
     background-size: contain;
     background-repeat: no-repeat;
-
-}
-
-.resturants div:hover {
     cursor: pointer;
 }
 

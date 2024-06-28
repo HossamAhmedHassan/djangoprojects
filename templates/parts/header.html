@@ -8,9 +8,11 @@
     <input type="search" class="search" id="search" placeholder="Search &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔍">
     <div class="headerleftside">
         <div class="leftsidespan inlineblock"><a class="leftsidelinks" href="{% url 'respage' %}">Resturunts</a></div>
+        {% comment %}
         <div class="leftsidespan inlineblock"><a class="leftsidelinks" href="{% url 'cart' %}">MyCart&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b class="leftsidehr">|</b></a></div>
         <div class="leftsidespan inlineblock"><a class="leftsidelinks" href="{% url 'orders' %}">My orders</a></div>
         <img src="{% static 'images/hos.jpg' %}" alt="hos.jpg" class="leftsideimg">
         <img src="{% static 'images/hos.jpg' %}" alt="hos.jpg" class="leftsideimg">
+        {% endcomment %}
     </div>
 </div>

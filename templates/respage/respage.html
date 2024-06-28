@@ -1,3 +1,5 @@
+{% load math_tags %}
+{% load custom_attributes %}
 {% load static %}
 {% include 'parts/header.html' %}
 <link rel="stylesheet" href="{% static 'css/respage/respage.css' %}">
@@ -19,7 +21,9 @@
         </div>
     </div>
 </div>
+
 <hr color="white">
+
 <div class="catogeries">
     <div class="catogery"><img src="{% static 'images/pizza.svg' %}" alt="">
         <p>Pizza</p>
@@ -40,60 +44,34 @@
         <p>Deserts</p>
     </div>
 </div>
-<p class="restaurant">Nearby resturants</p>
-<div class="resturants">
-    <div onclick="location.pathname = '/restaurant1'" style="background-image: url('../../static/images/0.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
-        <p class="resturantsp">Burger King</p>
-        <p class="resturantsp1">20-30min</p>
-        <span><img src="{% static 'images/burger.svg' %}" alt="">
-            <p>burger</p>
-        </span>
-        <span>
-            <img src="{% static 'images/pizza.svg' %}" alt="">
-            <p>pizza</p>
-        </span>
-    </div>
-    <div onclick="location.pathname = '/restaurant2'" style="background-image: url('../../static/images/1.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
-        <p class="resturantsp">Burger King</p>
-        <p class="resturantsp1">20-30min</p>
-        <span><img src="{% static 'images/burger.svg' %}" alt="">
-            <p>burger</p>
-        </span>
-    </div>
-    <div onclick="location.pathname = '/restaurant3'" style="background-image: url('../../static/images/2.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
-        <p class="resturantsp">Burger King</p>
-        <p class="resturantsp1">20-30min</p>
-        <span><img src="{% static 'images/salmon-sushi.svg' %}" alt="">
-            <p>sushi</p>
-        </span>
-    </div>
-    <div onclick="location.pathname = '/restaurant4'" style="background-image: url('../../static/images/3.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
-        <p class="resturantsp">Burger King</p>
-        <p class="resturantsp1">20-30min</p>
-        <span><img src="{% static 'images/salmon-sushi.svg' %}" alt="">
-            <p>sushi</p>
-        </span>
-    </div>
-    <div onclick="location.pathname = '/restaurant5'" style="background-image: url('../../static/images/4.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
-        <p class="resturantsp">Burger King</p>
-        <p class="resturantsp1">20-30min</p>
-        <span><img src="{% static 'images/salmon-sushi.svg' %}" alt="">
-            <p>sushi</p>
-        </span>
-    </div>
-    <div onclick="location.pathname = '/restaurant6'" style="background-image: url('../../static/images/5.png');">
-        <img src="{% static 'images/overview.png' %}" alt="" class="resturantsimgs">
-        <p class="resturantsp">Burger King</p>
-        <p class="resturantsp1">20-30min</p>
-        <span><img src="{% static 'images/pizza.svg' %}" alt="">
-            <p>sushi</p>
-        </span>
-    </div>
+<p>Nearby resturants</p>
+
+<div class="resturants" >
+    {% for x in restaurantTable %}
+    <form id="form-{{ forloop.counter }}" method="post" action="{% url 'respage' %}">{% csrf_token %}
+        <input type="hidden" name="{{x.name}}">
+        <div onclick="submitForm( {{forloop.counter}} )">
+            <img src="{{ x.image.url }}">
+            <p class="resturantName">{{x.name}}</p>
+            <p class="resturantOrder">Average Order Time {{x.average_order_time}} min</p>
+            <p class="resturantPrice">Average Price Amount : {{average_price_object|getEle:x}}$</p>
+            <span>
+                <p>{{x.category}}</p>
+            </span>
+        </div>
+    </form>
+    {% endfor %}
 </div>
+
+
 <button>View more</button>
+
+<script>
+    function submitForm(formIndex) {
+        var formId = 'form-' + formIndex;
+        var form = document.getElementById(formId);
+        form.submit();
+    }
+</script>
+
 {% include 'parts/footer.html' %}

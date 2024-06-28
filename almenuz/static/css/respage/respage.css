@@ -73,26 +73,32 @@
     margin-top: 10px;
 }
 
+.catogeries + p{
+    margin-left: 5%;
+    font-weight: 700;
+    font-family: system-ui;
+}
+
 .resturants {
     display: flex;
     width: 90%;
     margin-left: 5%;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.resturants div {
+.resturants form {
     width: 30%;
     border: rgb(225, 225, 225) 2px solid;
     margin-bottom: 20px;
     border-radius: 10px;
-    background-size: contain;
-    background-repeat: no-repeat;
-
+    cursor: pointer;
 }
 
-.resturants div:hover {
-    cursor: pointer;
+.resturants div img{
+    width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0 0;
 }
 
 span img {
@@ -109,18 +115,22 @@ span {
     border-radius: 15px;
 }
 
-.resturantsp {
+.resturantName {
     margin-top: 20px;
     margin-bottom: 0;
     margin-left: 10px;
 }
 
-.resturantsp1 {
+.resturantOrder,.resturantPrice {
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 14px;
-    color: rgb(200, 197, 197);
+    color: #0275d8;
     margin-left: 14px;
+}
+
+.resturantPrice{
+    color: #f0ad4e;
 }
 
 .resturants div span p {
@@ -152,12 +162,6 @@ button:hover {
 
 .wholefooter{
 overflow-y: hidden;
-}
-
-.restaurant{
-    margin-left: 5%;
-    font-weight: 700;
-    font-family: system-ui;
 }
 
 .resturantsimgs{
