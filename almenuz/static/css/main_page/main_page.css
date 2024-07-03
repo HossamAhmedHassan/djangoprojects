@@ -1,0 +1,170 @@
+.inlineblock {
+    display: inline-block;
+}
+
+.offers {
+    display: inline-flex;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: space-between;
+}
+
+.deserts {
+    width: 47%;
+    display: inline-flex;
+    border-radius: 10px;
+    padding: 5px 5px 0 5px;
+    height: 235px;
+    background-color: #fef2ec;
+}
+
+.desertsimg {
+    height: 235px;
+    margin-left: 2px;
+}
+
+.desertsdiv {
+    height: 360px;
+}
+
+.desertsp {
+    width: auto;
+    font-size: 20px;
+}
+
+.desertsp1 {
+    width: auto;
+    font-size: 34px;
+    margin-top: 10px;
+    font-family: Geneva, Tahoma, sans-serif;
+    color: rgb(253, 109, 34);
+}
+
+.catogeries {
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.catogery {
+    height: 80px;
+    border: rgb(225, 225, 225) 2px solid;
+    background-color: #fff;
+    width: 15%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.catogery:hover {
+    border: blue 2px solid;
+    background-color: rgb(245, 245, 255);
+    color: blue;
+    cursor: pointer;
+}
+
+.catogery p {
+    margin-top: 10px;
+}
+
+.catogery img {
+    width: 30px;
+    margin-top: 10px;
+}
+
+.catogeries + p{
+    margin-left: 5%;
+    font-weight: 700;
+    font-family: system-ui;
+}
+
+.resturants {
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.resturants form {
+    width: 30%;
+    border: rgb(225, 225, 225) 2px solid;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.resturants div img{
+    width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0 0;
+}
+
+span img {
+    width: 20px;
+    margin-bottom: -5px;
+}
+
+span {
+    display: inline-block;
+    margin-left: 10px;
+    background-color: rgb(216, 216, 216);
+    margin-bottom: 10px;
+    padding: 3px 10px;
+    border-radius: 15px;
+}
+
+.resturantName {
+    margin-top: 20px;
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.resturantOrder,.resturantPrice {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #0275d8;
+    margin-left: 14px;
+}
+
+.resturantPrice{
+    color: #f0ad4e;
+}
+
+.resturants div span p {
+    display: inline-block;
+    color: rgb(80, 80, 80);
+    padding: 0;
+    margin: 0;
+}
+
+.leftsidespan {
+    background-color: #fff;
+}
+
+button {
+    width: 10%;
+    margin-left: 45%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: rgb(47, 0, 255) 2px solid;
+    color: rgb(47, 0, 255);
+    padding: 9px 7px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.wholefooter{
+overflow-y: hidden;
+}
+
+.resturantsimgs{
+    visibility: hidden;
+    height: 160px;
+}

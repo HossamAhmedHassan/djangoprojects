@@ -1,15 +1,17 @@
 .submit{
     position: fixed;
-    top: 300px;
+    top: 250px;
     right: 250px;
     width: 120px;
     height: 60px;
-    border-width: 5px;
+    border-width: 1px;
     cursor: pointer;
+    border-style: solid;
     font-size: 25px; 
     background-color: rgb(229, 229, 229);
-    color: rgb(99, 99, 202);
-    border-color: rgb(99, 99, 202);
+    color: #cacaca;
+    border-color: rgb(69, 69, 69);
+    border-radius: 5px  !important;
 }
 
 .productInfo{

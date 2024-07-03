@@ -4,13 +4,14 @@
     right: 250px;
     width: 120px;
     height: 60px;
-    border-width: 5px;
+    border-width: 2px;
     cursor: pointer;
     border-style: solid;
     font-size: 25px; 
-    background-color: rgb(229, 229, 229);
-    color: #008ffa;
-    border-color: rgb(99, 99, 202);
+    background-color: #ffffff;
+    color: rgb(131, 131, 131);
+    border-color: rgb(183,183,183);
+    border-radius: 10px  !important;
 }
 
 .productInfo{
