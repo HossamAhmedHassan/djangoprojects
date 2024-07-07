@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+# TODO: what is the purpose of suit.apps import DjangoSuitConfig, I didn't find any usage for it
 from suit.apps import DjangoSuitConfig
 
 class PagesConfig(AppConfig):
