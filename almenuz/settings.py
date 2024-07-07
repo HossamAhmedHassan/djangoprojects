@@ -123,6 +123,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT =os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS =[
+    # TODO: don't set the static files in the project directory, use the static directory in the app or at the project level
     os.path.join(BASE_DIR,'almenuz/static')
     ]
 # Default primary key field type
