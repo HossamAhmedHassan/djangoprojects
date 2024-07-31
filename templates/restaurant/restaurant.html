@@ -1,10 +1,9 @@
 {% load static %}
 {% include 'parts/header.html' %}
-<link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
 <link rel="stylesheet" href="{% static 'css/restaurants/restaurants.css' %}">
 
 <form method="POST">{% csrf_token %}
-    <div class="ordered">
+    <div class="mealsList">
         <h2 class="menu">Menu</h2>
         <p class="meals">Meals</p>
         {% for product in restaurant_products %}

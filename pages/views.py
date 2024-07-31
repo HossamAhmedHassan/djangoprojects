@@ -1,45 +1,59 @@
 from django.shortcuts import render
-from .models import Restaurant,Product
+from .models import Restaurant, Product
+from rest_framework.decorators import api_view
+from django.core.paginator import Paginator
+import math
+
 # Create your views here.
 
 # hossam's part
+Restaurants = Restaurant.objects.all()
+Products = Product.objects.all()
 
-def main_page(requset):
+@api_view(['GET'])
+def main_page(request):
     
-    for restaurant in Restaurant.objects.all():
-        total_products_price = 0
-        products_count = 0
+    average_product_price = {}
+    chosenPage = request.GET.get("chosenPage")
+    currentPage = request.GET.get("currentPage")
+    searchValue = request.GET.get("searchValue")
+    filteredRestaurants = Restaurants
+    if searchValue != None:
+        filteredRestaurants = Restaurants.filter(name__contains=searchValue)
         
-        for product in Product.objects.all():
-            if product.restaurant.name == restaurant.name:
-                total_products_price += product.price
-                products_count += 1
-        if total_products_price > 0 and products_count > 0:
-              
-            x = Restaurant.objects.get(name=restaurant.name) 
-            x.average_product_price = total_products_price /products_count
-            x.save()
-            
-    context = {'restaurant' : Restaurant.objects.all()}
-
-    return render(requset,'main_page/main_page.html', context )
-
-
+    paginationLength=math.ceil(filteredRestaurants.count() /6)
+    limitedRestaurant = Paginator(filteredRestaurants,6)
+    
+    try:
+        currentPage = int(currentPage) if currentPage else 1
+    except (ValueError, TypeError):
+        currentPage = 1
+        
+    for restaurant in Restaurants:
+        try:
+            total = sum(map(lambda row: row[0],Products.filter(restaurant=restaurant).values_list("price"))) / Products.filter(restaurant=restaurant).count()
+            average_product_price[restaurant] = total
+        except:
+            average_product_price[restaurant] = 0
+    context = {
+        "restaurants": limitedRestaurant.page(currentPage),
+        "average_product_price": average_product_price,
+        'currentPage':currentPage,
+        'paginationLength':paginationLength,
+        'filteredRestaurantsLength':filteredRestaurants.count(),
+    }
+    return render(request, "main_page/main_page.html", context)
 
 
 def restaurant_menu(request):
-    restaurant_products = []
-    for current_restaurant in request.GET:
-        for product in Product.objects.all():
-            if product.restaurant.name == current_restaurant:
-                restaurant_products.append(product)
+    restaurant_id = Restaurants.get(name=(list(request.GET.dict())[0])).id
+    restaurant_products = Products.filter(restaurant_id=restaurant_id)
 
-    context = {'restaurant_products':restaurant_products}
-    return render(request,"restaurant/restaurant.html",context)
+    context = {"restaurant_products": restaurant_products}
+    return render(request, "restaurant/restaurant.html", context)
 
 
 # bassem's part
-
 
 
 # karem's part

@@ -73,7 +73,7 @@
     margin-top: 10px;
 }
 
-.catogeries + p{
+.catogeries+p {
     margin-left: 5%;
     font-weight: 700;
     font-family: system-ui;
@@ -95,7 +95,7 @@
     cursor: pointer;
 }
 
-.resturants div img{
+.resturants div img {
     width: 100%;
     height: auto;
     border-radius: 5px 5px 0 0;
@@ -121,7 +121,7 @@ span {
     margin-left: 10px;
 }
 
-.resturantOrder,.resturantPrice {
+.resturantOrder, .resturantPrice {
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 14px;
@@ -129,7 +129,7 @@ span {
     margin-left: 14px;
 }
 
-.resturantPrice{
+.resturantPrice {
     color: #f0ad4e;
 }
 
@@ -160,11 +160,17 @@ button:hover {
     cursor: pointer;
 }
 
-.wholefooter{
-overflow-y: hidden;
+.wholefooter {
+    overflow-y: hidden;
 }
 
-.resturantsimgs{
+.resturantsimgs {
     visibility: hidden;
     height: 160px;
+}
+
+.checked {
+    color: orange;
+    margin: 0;
+    padding: 0 0 0 8;
 }

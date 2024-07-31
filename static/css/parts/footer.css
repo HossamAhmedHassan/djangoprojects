@@ -1,13 +1,18 @@
+body{
+    margin: 0%;
+}
+
 .wholefooter p {
     font-size: 17px;
 }
 
 .wholefooter {
-    width: 98%;
-    padding: 1%;
+    width:100%;
     background-color: rgb(0, 0, 86);
     color: #fff;
-    margin-bottom: -100px;
+    position: relative;
+    left: 0;
+    bottom: 0%;
     height: 200px;
 }
 

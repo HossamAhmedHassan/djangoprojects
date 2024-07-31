@@ -1,9 +1,12 @@
-
+{% load custom_tags %}
 {% load static %}
 {% include 'parts/header.html' %}
-<link rel="stylesheet" href="{% static 'css/respage/respage.css' %}">
+<link rel="stylesheet" href="{% static 'css/main_page/main_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/main_page/Pagination.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{% static 'js/main_page.js' %}"></script>
 <hr color="grey"><br>
-<div class="offers">
+{% comment %} <div class="offers">
     <div class="deserts" style="background-color:#f3f4ff;">
         <img src="{% static 'images/hugecupcake.png' %}" alt="" class="desertsimg inlineblock">
         <div class="inlineblock desertsdiv">
@@ -42,34 +45,51 @@
     <div class="catogery"><img src="{% static 'images/cupcake.png' %}" alt="">
         <p>Deserts</p>
     </div>
-</div>
+</div> {% endcomment %}
 <p>Nearby resturants</p>
 
 <div class="resturants" >
-    {% for x in restaurant %}
-    <form id="form-{{ forloop.counter }}" method="get" action="{% url 'restaurant_menu' %}">
-        <input type="hidden" name="{{x.name}}">
-        <div onclick="submitForm( {{forloop.counter}} )">
-            <img src="{{ x.image.url }}">
-            <p class="resturantName">{{x.name}}</p>
-            <p class="resturantPrice">Average Product Price : {{x.average_product_price}}$</p>
-            <span>
-                <p>{{x.category}}</p>
-            </span>
-        </div>
-    </form>
-    {% endfor %}
+    {% if filteredRestaurantsLength != 0 %}
+        {% for restaurant in restaurants %}
+            <form id="form-{{ forloop.counter }}" method="get" action="{% url 'restaurant_menu' %}">
+                <input type="hidden" name="{{restaurant.name}}">
+                <div onclick="submitForm( {{forloop.counter}} )" id="{{restaurant.name}}">
+                    <img src="{{ restaurant.image.url }}">
+                    <p class="resturantName">{{restaurant.name}}</p>
+                    <p class="resturantPrice">Average Product Price : {{average_product_price|get_item:restaurant}}$</p>
+                    <span>
+                        <p>{{restaurant.category}}</p>
+                    </span>
+                    <span>
+                        <p>{{restaurant.rate}}<span class="fa fa-star checked"></span></p>
+                    </span>
+                </div>
+            </form>
+        {% endfor %}
+    {% else %}
+            <div class="emptyPage">
+                <p>There are no restaurants found with this name</p>
+            </div>
+    {% endif %}
 </div>
 
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
 
-<button>View more</button>
+            <li class="page-item"><a class="page-link " id="previous" onclick="pagination('previous',{{currentPage}})">Previous</a></li>
+            
+            {% for thisPage in paginationLength|rangeCustom %}
+                <li class="page-item" id="{{thisPage}}">
+                    <a class="page-link" onclick="pagination({{thisPage}},{{currentPage}})" >{{thisPage}}</a>
+                </li>
+            {% endfor %}
+
+            <li class="page-item"><a class="page-link" id="next" onclick="pagination('next',{{currentPage}})">Next</a></li>
+        
+        </ul>
+    </nav>
 
 <script>
-    function submitForm(formIndex) {
-        var formId = 'form-' + formIndex;
-        var form = document.getElementById(formId);
-        form.submit();
-    }
-</script> 
-
+    window.onload = onloadActions({{currentPage}},{{paginationLength}})
+</script>
 {% include 'parts/footer.html' %}

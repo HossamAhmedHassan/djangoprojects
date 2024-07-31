@@ -1,0 +1,50 @@
+.inlineblock{
+    display: inline-block;
+}
+.navbar{
+width: 100%;
+}
+.fooddelivery{
+font-size: 18px;
+margin-left: 5%;
+}
+.food{
+margin-top: 15px ;
+margin-bottom: -20px;
+}
+.delivery{
+padding-bottom: 2px;
+}
+.search{
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(220, 220, 220);
+    outline: none;
+    padding:10px;
+    width: 172.4px;
+    margin-left: 50px;
+}
+.headerleftside{
+    margin-left: 300px;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 44%;
+}
+.leftsidehr{
+    color: rgb(239, 239, 239);
+}
+.leftsidelinks{
+text-decoration: none;
+color: rgb(33, 33, 33);
+}
+.leftsidelinks:hover,.delivery{
+  color: blue;
+}
+.leftsideimg{
+width: 50px;
+border-radius: 7px;
+}
+.leftsidespan{
+    background-position: center center;
+    padding-top: 20px;
+}
