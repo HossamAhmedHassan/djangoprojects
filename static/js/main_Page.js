@@ -6,7 +6,7 @@ function submitForm(formIndex) {
 
 function onloadActions(currentPage, paginationLength) {
     let currentPageNumber = document.getElementById(currentPage)
-    console.log("SAd");
+
     if (currentPageNumber != null) {
         currentPageNumber.classList.add("active")
     }
@@ -24,6 +24,10 @@ function onloadActions(currentPage, paginationLength) {
 
 function pagination(chosenOption, currentPage) {
     const url = new URL(window.location.href);
+    url.searchParams.forEach((value, key) => {
+        url.searchParams.delete(key);
+    });
+    
     if (chosenOption == "next") {
         currentPage += 1
         url.searchParams.set("currentPage", currentPage);
@@ -37,3 +41,9 @@ function pagination(chosenOption, currentPage) {
     location.reload()
 }   
 
+function deleteRestaurant(id){
+    const url = new URL(window.location.href);  
+    url.searchParams.set("id", id);
+    window.history.replaceState({}, '', url.toString());
+    location.reload()
+}

@@ -88,10 +88,11 @@
 }
 
 .resturants form {
-    width: 30%;
+    width: 100%;
     border: rgb(225, 225, 225) 2px solid;
-    margin-bottom: 20px;
-    border-radius: 10px;
+    margin: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     cursor: pointer;
 }
 
@@ -115,13 +116,13 @@ span {
     border-radius: 15px;
 }
 
-.resturantName {
+.restaurantName {
     margin-top: 20px;
     margin-bottom: 0;
     margin-left: 10px;
 }
 
-.resturantOrder, .resturantPrice {
+.restaurantOrder, .restaurantPrice {
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 14px;
@@ -129,11 +130,11 @@ span {
     margin-left: 14px;
 }
 
-.resturantPrice {
-    color: #f0ad4e;
+.restaurantPrice {
+    color: #1f8ad6;
 }
 
-.resturants div span p {
+.properties {
     display: inline-block;
     color: rgb(80, 80, 80);
     padding: 0;
@@ -142,22 +143,6 @@ span {
 
 .leftsidespan {
     background-color: #fff;
-}
-
-button {
-    width: 10%;
-    margin-left: 45%;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    border: rgb(47, 0, 255) 2px solid;
-    color: rgb(47, 0, 255);
-    padding: 9px 7px;
-    border-radius: 10px;
-    background-color: #fff;
-}
-
-button:hover {
-    cursor: pointer;
 }
 
 .wholefooter {
@@ -183,9 +168,47 @@ button:hover {
     height: 200px;
 }
 
-.emptyPage p{
+.emptyPage p {
     padding: 6px;
     color: #0275d8;
     font-size: 20px;
     word-spacing: 3px;
+}
+
+.edit {
+    display: flex;
+    border: rgb(225, 225, 225) 2px solid;
+    border-top: none;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 6px 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.edit a, .edit span {
+    display: inline-block;
+    color: rgb(80, 80, 80);
+    width: 100px;
+    background-color: rgb(216, 216, 216);
+    padding: 3px 0;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0%;
+}
+
+.edit span {
+    outline: solid 1px rgb(255, 39, 39);
+    color: rgb(255, 46, 46);
+    background-color: #fff;
+    padding: 4px 0;
+    cursor: pointer;
+}
+
+.edit span:hover {
+    outline: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 34, 34);
 }

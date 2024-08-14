@@ -1,7 +1,22 @@
 {% load static %}
 {% include 'parts/header.html' %}
+<link rel="stylesheet" href="{% static 'css/main_page/main_page.css' %}">
 <link rel="stylesheet" href="{% static 'css/restaurants/restaurants.css' %}">
-
+<script src="{% static 'js/main_page.js' %}"></script>
+<hr color="grey"><br>
+<style>
+    .productEdit{
+        border: none;
+        width: auto;
+        flex-direction: column;
+        position: absolute;
+        right: 20px;
+        height: 100px;
+    }
+    input[type=number]{
+        right: 200px;
+    }
+</style>
 <form method="POST">{% csrf_token %}
     <div class="mealsList">
         <h2 class="menu">Menu</h2>
@@ -17,6 +32,15 @@
                         <p class="proPrice">{{product.price}}$</p>
                     </div>
                     <input type="number" name="id{{product.id}}" id="input" value=0 min=0 max=9 >
+                    <div class="edit productEdit">
+                        <a href="{% url 'create_restaurant' %}?id={{product.id}}">&#9998;</a>
+                        <span onclick="deleteRestaurant({{product.id}})" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                            </svg>
+                        </span>
+                    </div>
                 </div>
             </div>
         {% endfor %}
@@ -24,8 +48,3 @@
     <input type="submit" value="To Cart" class="submit" >
     
 </form>
-{% comment %}
-<form action="{% url 'cart' %}">
-        <input type="submit" value="Go Cart" class="submit" style="top: 340px;">
-</form>
-{% endcomment %}

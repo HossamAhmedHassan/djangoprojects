@@ -3,7 +3,6 @@ const urlParams = new URLSearchParams(url.search);
 let searchInput = document.getElementById("search")
 
 function onloadSearchActions() {
-    console.log("SAd");
     searchInput.focus()
     if (urlParams.has("searchValue")) {
         searchInput.value = urlParams.get('searchValue');
